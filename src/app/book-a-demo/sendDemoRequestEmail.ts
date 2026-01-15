@@ -29,6 +29,6 @@ export async function sendDemoRequestEmail(data: DemoRequestData): Promise<void>
             text: emailBody,
         })
     } catch (error) {
-        console.error('Failed to send demo request email:', { error, data })
+        console.error('Failed to send demo request email:', error instanceof Error ? error.message : error)
     }
 }
