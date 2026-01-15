@@ -47,7 +47,7 @@ export const BookDemoForm = ({ onSuccess }: BookDemoFormProps) => {
     }
 
     const inputClassName = (error?: boolean) =>
-        `mt-2 block w-full rounded-xl border bg-white px-4 py-3 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-1 ${
+        `mt-2 block w-full rounded-xl border bg-white px-3 py-2 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-1 ${
             error
                 ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
                 : 'border-zinc-200 focus:border-[#002FA7] focus:ring-[#002FA7]'
@@ -55,7 +55,7 @@ export const BookDemoForm = ({ onSuccess }: BookDemoFormProps) => {
 
     return (
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-xl">
+            <div className="mx-auto max-w-lg">
                 <div className="text-center">
                     <h1 className="text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">Book a demo</h1>
                     <p className="mt-4 text-lg text-zinc-600">
@@ -122,7 +122,7 @@ export const BookDemoForm = ({ onSuccess }: BookDemoFormProps) => {
                                     international
                                     defaultCountry="US"
                                     flagUrl="https://www.untitledui.com/images/flags/{XX}.svg"
-                                    className={`phone-input mt-2 block w-full rounded-xl border bg-white px-4 py-3 text-zinc-900 ${
+                                    className={`phone-input mt-2 block w-full rounded-xl border bg-white px-3 py-2 text-zinc-900 ${
                                         errors.phone
                                             ? 'border-red-300 focus-within:border-red-500 focus-within:ring-1 focus-within:ring-red-500'
                                             : 'border-zinc-200 focus-within:border-[#002FA7] focus-within:ring-1 focus-within:ring-[#002FA7]'
