@@ -41,7 +41,7 @@ const IntegrationCard = ({
 }) => {
     return (
         <div className="relative rounded-2xl border border-zinc-200 bg-zinc-50/50 p-4">
-            <div className="*:h-8 *:w-8 *:text-zinc-700">{children}</div>
+            <div className="*:h-8 *:w-8 *:text-[#002FA7]">{children}</div>
 
             <div className="mt-3 space-y-1">
                 <div className="flex items-center gap-2">
