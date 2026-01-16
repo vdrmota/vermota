@@ -1,9 +1,9 @@
 export default function DashboardPage() {
     return (
         <div>
-            <h1 className="text-2xl font-medium text-zinc-900">Dashboard</h1>
+            <h1 className="text-2xl font-medium text-zinc-900">Home</h1>
             <p className="mt-2 text-zinc-600">
-                Welcome to your Vermota dashboard. This is where you&apos;ll manage your loyalty programs.
+                Welcome to Vermota. This is where you&apos;ll manage your loyalty programs.
             </p>
 
             {/* Placeholder content */}

@@ -1,9 +1,9 @@
-import { LayoutDashboard, Heart, Users, Plug } from 'lucide-react'
+import { Sparkles, Heart, Users, Plug } from 'lucide-react'
 
 export const navigation = [
     {
-        title: 'Dashboard',
-        icon: LayoutDashboard,
+        title: 'Home',
+        icon: Sparkles,
         href: '/dashboard',
     },
     {
