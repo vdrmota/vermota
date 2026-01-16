@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Card, CardContent, CardHeader } from './card'
 import { Gift, Users, TrendingUp, Clock } from 'lucide-react'
 
 const examples = [

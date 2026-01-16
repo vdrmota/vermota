@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { BookDemoForm } from './components/BookDemoForm'
-import { BookDemoSuccess } from './components/BookDemoSuccess'
+import { BookDemoForm } from './_components/BookDemoForm'
+import { BookDemoSuccess } from './_components/BookDemoSuccess'
 
 const BookADemo = () => {
     const [successFirstName, setSuccessFirstName] = useState<string | null>(null)

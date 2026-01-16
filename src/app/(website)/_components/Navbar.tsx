@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react'
+import Logo from '@/components/Logo'
 
 const navLinks = [
     { label: 'FAQ', href: '#faq' },
@@ -11,12 +12,7 @@ const Navbar = () => {
             <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Logo + Links */}
                 <div className="flex items-center gap-8">
-                    <a href="/" className="flex items-center gap-2">
-                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-zinc-900">
-                            <span className="text-xs font-bold text-white">V</span>
-                        </div>
-                        <span className="font-semibold text-zinc-900">Vermota</span>
-                    </a>
+                    <Logo />
 
                     <nav className="hidden items-center gap-6 md:flex">
                         {navLinks.map((link, index) => (
