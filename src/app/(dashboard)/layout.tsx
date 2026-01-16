@@ -13,7 +13,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
             {/* Inset main content */}
             <div className="flex flex-1 flex-col bg-zinc-100 p-2">
-                <div className="flex flex-1 flex-col overflow-hidden rounded-xl bg-white shadow-sm">
+                <div className="flex flex-1 flex-col overflow-hidden rounded-xl bg-zinc-50 shadow-sm">
                     {/* Top bar */}
                     <header className="flex h-14 items-center justify-between border-b border-zinc-200 px-4 lg:px-6">
                         <div className="flex items-center gap-3">
