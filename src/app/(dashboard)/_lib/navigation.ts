@@ -1,4 +1,4 @@
-import { Sparkles, Heart, Users, Plug } from 'lucide-react'
+import { Sparkles, Heart, Rocket, Users, Plug } from 'lucide-react'
 
 export const navigation = [
     {
@@ -7,9 +7,14 @@ export const navigation = [
         href: '/dashboard',
     },
     {
-        title: 'Loyalty Programs',
+        title: 'Loyalty Suite',
         icon: Heart,
         href: '/loyalty',
+    },
+    {
+        title: 'Growth Suite',
+        icon: Rocket,
+        href: '/growth',
     },
     {
         title: 'CRM',
@@ -25,5 +30,5 @@ export const navigation = [
 
 // Derived mapping for breadcrumbs: slug -> title
 export const routeNames: Record<string, string> = Object.fromEntries(
-    navigation.map((item) => [item.href.slice(1), item.title])
+    navigation.map(item => [item.href.slice(1), item.title]),
 )
