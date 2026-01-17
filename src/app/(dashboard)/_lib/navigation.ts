@@ -28,7 +28,14 @@ export const navigation = [
     },
 ]
 
+// Additional routes not in sidebar (profile menu, etc.)
+const additionalRoutes: Record<string, string> = {
+    'account-settings': 'Account Settings',
+    'billing': 'Billing',
+}
+
 // Derived mapping for breadcrumbs: slug -> title
-export const routeNames: Record<string, string> = Object.fromEntries(
-    navigation.map(item => [item.href.slice(1), item.title]),
-)
+export const routeNames: Record<string, string> = {
+    ...Object.fromEntries(navigation.map(item => [item.href.slice(1), item.title])),
+    ...additionalRoutes,
+}

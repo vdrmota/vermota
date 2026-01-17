@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import Logo from '@/components/Logo'
 import { navigation } from '../_lib/navigation'
+import { floatingPanel, menuItem } from '../_lib/styles'
 
 export default function MobileMenu() {
     const pathname = usePathname()
@@ -31,8 +32,8 @@ export default function MobileMenu() {
 
             {/* Drawer */}
             <div
-                className={`fixed inset-y-0 left-0 z-50 w-64 bg-zinc-50 transition-transform duration-200 ease-in-out lg:hidden ${
-                    open ? 'translate-x-0' : '-translate-x-full'
+                className={`fixed bottom-3 left-3 top-3 z-50 w-64 ${floatingPanel.base} transition-transform duration-200 ease-in-out lg:hidden ${
+                    open ? 'translate-x-0' : '-translate-x-[calc(100%+12px)]'
                 }`}
             >
                 {/* Header */}
@@ -58,11 +59,7 @@ export default function MobileMenu() {
                                     <Link
                                         href={item.href}
                                         onClick={() => setOpen(false)}
-                                        className={`flex items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium transition-all duration-300 ease-in-out ${
-                                            isActive
-                                                ? 'bg-[#002FA7]/10 text-[#002FA7]'
-                                                : 'text-zinc-600 hover:bg-zinc-200/50 hover:text-zinc-900'
-                                        }`}
+                                        className={`${menuItem.base} ${isActive ? menuItem.active : menuItem.inactive}`}
                                     >
                                         <item.icon className="h-4 w-4 shrink-0" />
                                         {item.title}

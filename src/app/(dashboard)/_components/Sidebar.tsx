@@ -6,13 +6,14 @@ import { usePathname } from 'next/navigation'
 import { PanelLeftClose, PanelLeft } from 'lucide-react'
 import Logo from '@/components/Logo'
 import { navigation } from '../_lib/navigation'
+import { floatingPanel, menuItem } from '../_lib/styles'
 
 export default function Sidebar() {
     const pathname = usePathname()
     const [collapsed, setCollapsed] = useState(false)
 
     return (
-        <aside className={`m-3 hidden flex-col rounded-2xl bg-zinc-100 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_8px_24px_rgba(0,0,0,0.15)] lg:flex ${collapsed ? 'w-14' : 'w-52'} transition-all duration-200`}>
+        <aside className={`m-3 hidden flex-col ${floatingPanel.base} lg:flex ${collapsed ? 'w-14' : 'w-52'} transition-all duration-200`}>
             {/* Header */}
             <div className={`flex h-14 items-center px-4 ${collapsed ? 'justify-center' : 'justify-between'}`}>
                 {!collapsed && <Logo linked={false} />}
@@ -35,11 +36,7 @@ export default function Sidebar() {
                             <li key={item.href}>
                                 <Link
                                     href={item.href}
-                                    className={`flex items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium transition-all duration-300 ease-in-out ${
-                                        isActive
-                                            ? 'bg-[#002FA7]/10 text-[#002FA7]'
-                                            : 'text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900'
-                                    }`}
+                                    className={`${menuItem.base} ${isActive ? menuItem.active : menuItem.inactive}`}
                                     title={collapsed ? item.title : undefined}
                                 >
                                     <item.icon className="h-4 w-4 shrink-0" />

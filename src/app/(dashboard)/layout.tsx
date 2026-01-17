@@ -1,6 +1,8 @@
 import Sidebar from './_components/Sidebar'
 import Breadcrumb from './_components/Breadcrumb'
 import MobileMenu from './_components/MobileMenu'
+import ProfileDropdown from './_components/ProfileDropdown'
+import { floatingPanel } from './_lib/styles'
 
 export const metadata = {
     title: 'Dashboard',
@@ -16,14 +18,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 {/* Floating top bar elements */}
                 <div className="flex items-center justify-between p-3 pb-0">
                     {/* Breadcrumbs container */}
-                    <div className="flex h-10 items-center gap-3 rounded-2xl bg-zinc-100 px-4 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_6px_20px_rgba(0,0,0,0.15)]">
+                    <div className={`flex h-10 items-center gap-3 px-4 ${floatingPanel.small}`}>
                         <MobileMenu />
-                        <Breadcrumb />
+                        <span className="hidden sm:block"><Breadcrumb /></span>
                     </div>
-                    {/* Profile container */}
-                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-zinc-100 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_6px_20px_rgba(0,0,0,0.15)]">
-                        <div className="h-6 w-6 rounded-full bg-zinc-300" />
-                    </div>
+                    {/* Profile dropdown */}
+                    <ProfileDropdown />
                 </div>
 
                 <main className="flex-1 overflow-auto p-6">{children}</main>
