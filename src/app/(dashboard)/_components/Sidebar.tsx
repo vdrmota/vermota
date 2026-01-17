@@ -13,7 +13,7 @@ export default function Sidebar() {
     const [collapsed, setCollapsed] = useState(false)
 
     return (
-        <aside className={`m-3 hidden flex-col ${floatingPanel.base} lg:flex ${collapsed ? 'w-14' : 'w-52'} transition-all duration-200`}>
+        <aside className={`fixed left-3 top-3 bottom-3 hidden flex-col ${floatingPanel.base} lg:flex ${collapsed ? 'w-14' : 'w-52'} transition-all duration-200 z-40`}>
             {/* Header */}
             <div className={`flex h-14 items-center px-4 ${collapsed ? 'justify-center' : 'justify-between'}`}>
                 {!collapsed && <Logo linked={false} />}

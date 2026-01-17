@@ -30,11 +30,14 @@ export default function ProfileDropdown() {
                 onClick={() => setOpen(!open)}
                 className={`flex h-10 w-10 cursor-pointer items-center justify-center ${floatingPanel.small} transition-colors hover:bg-zinc-200`}
             >
-                <div className="h-6 w-6 rounded-full bg-zinc-300" />
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-300 text-xs font-medium text-zinc-600">A</div>
             </button>
 
             {open && (
-                <div className={`absolute right-0 top-12 w-48 p-1.5 ${floatingPanel.base}`}>
+                <div
+                    className="absolute right-0 top-12 w-48 p-1.5 rounded-2xl backdrop-blur-xl shadow-[0_0_0_1px_rgba(255,255,255,0.25),0_12px_48px_rgba(0,0,0,0.2)]"
+                    style={{ background: 'rgba(255,255,255,0.55)' }}
+                >
                     {menuItems.map((item) => (
                         <Link
                             key={item.href}

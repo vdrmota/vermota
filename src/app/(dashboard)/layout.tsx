@@ -2,6 +2,7 @@ import Sidebar from './_components/Sidebar'
 import Breadcrumb from './_components/Breadcrumb'
 import MobileMenu from './_components/MobileMenu'
 import ProfileDropdown from './_components/ProfileDropdown'
+import AIPrompt from './_components/AIPrompt'
 import { floatingPanel } from './_lib/styles'
 
 export const metadata = {
@@ -10,11 +11,11 @@ export const metadata = {
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="flex min-h-screen bg-zinc-50">
+        <div className="flex min-h-screen bg-[#fcfcfc]">
             <Sidebar />
 
             {/* Main content area */}
-            <div className="flex flex-1 flex-col">
+            <div className="flex flex-1 flex-col lg:ml-56">
                 {/* Floating top bar elements */}
                 <div className="flex items-center justify-between p-3 pb-0">
                     {/* Breadcrumbs container */}
@@ -26,8 +27,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     <ProfileDropdown />
                 </div>
 
-                <main className="flex-1 overflow-auto p-6">{children}</main>
+                <main className="flex-1 overflow-auto p-6 pb-40">{children}</main>
             </div>
+
+            <AIPrompt />
         </div>
     )
 }

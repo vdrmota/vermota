@@ -32,6 +32,7 @@ export const navigation = [
 const additionalRoutes: Record<string, string> = {
     'account-settings': 'Account Settings',
     'billing': 'Billing',
+    'top-programs': 'Top Programs',
 }
 
 // Derived mapping for breadcrumbs: slug -> title
