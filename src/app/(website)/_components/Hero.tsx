@@ -60,7 +60,6 @@ const Hero = () => {
     const [isPaused, setIsPaused] = useState(false)
     const justResumed = useRef(false)
 
-    // Typing animation
     useEffect(() => {
         const fullText = prompts[currentIndex].input
         setDisplayedText('')
@@ -75,7 +74,6 @@ const Hero = () => {
             } else {
                 setIsTyping(false)
                 clearInterval(typingInterval)
-                // Show output 1 second after typing finishes
                 setTimeout(() => setShowOutput(true), 1000)
             }
         }, 35)
@@ -120,10 +118,8 @@ const Hero = () => {
 
     return (
         <section className="relative overflow-hidden bg-gradient-to-b from-white from-50% to-zinc-50">
-            {/* Hero Content */}
             <div className="mx-auto max-w-7xl px-4 pt-10 pb-12 sm:px-6 sm:pb-16 lg:px-8">
                 <div className="mx-auto max-w-3xl text-center">
-                    {/* Announcement Strip */}
                     <div className="relative mb-6 inline-flex rounded-full p-[1px] overflow-hidden bg-zinc-200">
                         <span className="absolute top-1/2 left-1/2 aspect-square w-[500%] -translate-x-1/2 -translate-y-1/2 animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_330deg,#002FA7_360deg)]" />
                         <div className="relative inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5">
@@ -142,7 +138,6 @@ const Hero = () => {
                         reporting your team can run today.
                     </p>
 
-                    {/* CTAs */}
                     <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
                         <a
                             href="/book-a-demo"
@@ -159,16 +154,13 @@ const Hero = () => {
                         </a>
                     </div>
 
-                    {/* Microcopy */}
                     <p className="mt-4 text-xs text-zinc-500">No code. No messy rule builders.</p>
                 </div>
 
-                {/* Hero Visual - Prompt Panel */}
                 <div className="mx-auto mt-10 max-w-4xl">
                     <div className="relative">
                         <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-xl shadow-zinc-900/5">
                             <div className="grid md:grid-cols-2">
-                                {/* Left - Prompt */}
                                 <div
                                     className={`border-b border-zinc-200 p-6 md:border-b-0 md:border-r transition-opacity duration-700 ease-in-out ${
                                         isAnimating ? 'opacity-60' : 'opacity-100'
@@ -216,13 +208,11 @@ const Hero = () => {
                                     </p>
                                 </div>
 
-                                {/* Right - Program Summary */}
                                 <div className="bg-[#002FA7] p-6 relative">
                                     <div className="mb-3 inline-block rounded-full bg-white px-3 py-1 text-xs font-medium text-[#002FA7]">
                                         Vermota builds
                                     </div>
 
-                                    {/* Loading spinner - positioned absolutely */}
                                     <div
                                         className={`absolute left-6 top-20 flex items-center gap-1.5 transition-opacity duration-300 ${
                                             !showOutput ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -242,7 +232,6 @@ const Hero = () => {
                                         />
                                     </div>
 
-                                    {/* Content - always rendered to maintain height */}
                                     <div
                                         className={`space-y-2 text-sm text-white/70 ${
                                             showOutput
@@ -271,7 +260,6 @@ const Hero = () => {
                             </div>
                         </div>
 
-                        {/* Dots indicator */}
                         <div className="mt-4 flex justify-center gap-2">
                             {prompts.map((_, idx) => (
                                 <button

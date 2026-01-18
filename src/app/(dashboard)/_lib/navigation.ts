@@ -1,4 +1,4 @@
-import { Sparkles, Heart, Rocket, Users, Plug } from 'lucide-react'
+import { Sparkles, Heart, Rocket, Users, Plug, CreditCard, BarChart3 } from 'lucide-react'
 
 export const navigation = [
     {
@@ -22,20 +22,34 @@ export const navigation = [
         href: '/crm',
     },
     {
+        title: 'Payments',
+        icon: CreditCard,
+        href: '/payments',
+    },
+    {
+        title: 'Analytics',
+        icon: BarChart3,
+        href: '/analytics',
+    },
+    {
         title: 'POS Connection',
         icon: Plug,
         href: '/pos',
     },
 ]
 
-// Additional routes not in sidebar (profile menu, etc.)
 const additionalRoutes: Record<string, string> = {
     'account-settings': 'Account Settings',
     'billing': 'Billing',
-    'top-programs': 'Top Programs',
+    'activity': 'Activity',
+    'close-to-reward': 'Close to Reward',
+    'campaigns': 'Campaigns',
+    'new': 'New',
+    'referrals': 'Referrals',
+    'win-back': 'Win Back',
+    'trends': 'Trends',
 }
 
-// Derived mapping for breadcrumbs: slug -> title
 export const routeNames: Record<string, string> = {
     ...Object.fromEntries(navigation.map(item => [item.href.slice(1), item.title])),
     ...additionalRoutes,

@@ -10,7 +10,6 @@ const Navbar = () => {
     return (
         <nav className="sticky top-0 z-50 border-b border-zinc-200/50 bg-white/80 shadow-sm shadow-zinc-900/5 backdrop-blur-md">
             <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-                {/* Logo + Links */}
                 <div className="flex items-center gap-8">
                     <Logo />
 
@@ -27,7 +26,6 @@ const Navbar = () => {
                     </nav>
                 </div>
 
-                {/* CTA */}
                 <a
                     href="/book-a-demo"
                     className="inline-flex items-center gap-1.5 rounded-full bg-zinc-900 px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800"

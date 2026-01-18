@@ -8,7 +8,6 @@ const Footer = () => {
         <footer className="border-t border-zinc-200/50 bg-zinc-50 py-8">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
-                    {/* Logo + Links */}
                     <div className="flex flex-col items-center gap-6 md:flex-row md:gap-10">
                         <div className="flex items-center gap-2">
                             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-900">
@@ -30,7 +29,6 @@ const Footer = () => {
                         </nav>
                     </div>
 
-                    {/* Copyright */}
                     <p className="text-sm text-zinc-500">© {new Date().getFullYear()} Vermota</p>
                 </div>
             </div>

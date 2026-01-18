@@ -111,7 +111,6 @@ const ProgramExamples = () => {
     return (
         <section id="examples" className="bg-zinc-50 py-16 md:py-24">
             <div className="mx-auto max-w-5xl px-6">
-                {/* Section Header */}
                 <div className="text-center">
                     <h2 className="text-balance text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
                         Use high-performing templates.
@@ -121,12 +120,10 @@ const ProgramExamples = () => {
                     </p>
                 </div>
 
-                {/* Cards */}
                 <Card className="mx-auto mt-12 grid max-w-sm divide-y overflow-hidden shadow-zinc-950/5 md:mt-16 md:max-w-full md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4">
                     {examples.map((example, index) => (
                         <div key={index} className="group text-center">
                             <CardHeader className="pb-3">
-                                {/* Illustration */}
                                 <div className="mx-auto flex min-h-32 items-center justify-center">
                                     {example.illustration}
                                 </div>

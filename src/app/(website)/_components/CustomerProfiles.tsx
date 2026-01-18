@@ -60,7 +60,6 @@ const CustomerProfiles = () => {
         <section className="relative bg-gradient-to-b from-zinc-50 to-white py-12 sm:py-16">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-                    {/* Content */}
                     <div>
                         <h2 className="text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl">
                             Know your customers without digging.
@@ -82,13 +81,11 @@ const CustomerProfiles = () => {
                         </ul>
                     </div>
 
-                    {/* Screenshot Placeholder */}
                     <div
                         ref={cardRef}
                         className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl shadow-zinc-900/5"
                     >
                         <div className="rounded-xl bg-zinc-50 p-6">
-                            {/* Mock Profile Card */}
                             <div className="space-y-4">
                                 <div className="flex items-center gap-4">
                                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-lg font-semibold text-white">

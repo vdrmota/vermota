@@ -36,9 +36,7 @@ const Comparator = () => {
                     More loyalty = More revenue.
                 </h2>
 
-                {/* Mobile: Stacked Cards */}
                 <div className="grid gap-6 md:hidden">
-                    {/* Typical Tools Card */}
                     <div className="rounded-2xl border border-zinc-200 bg-white p-6">
                         <div className="mb-5 inline-block rounded-full bg-zinc-100 px-4 py-1.5 text-sm font-medium text-zinc-600">
                             Typical tools
@@ -55,7 +53,6 @@ const Comparator = () => {
                         </ul>
                     </div>
 
-                    {/* Vermota Card */}
                     <div className="rounded-2xl border border-zinc-200 bg-white p-6">
                         <div className="mb-5 inline-block rounded-full bg-[#002FA7] px-4 py-1.5 text-sm font-medium text-white">
                             Vermota
@@ -73,7 +70,6 @@ const Comparator = () => {
                     </div>
                 </div>
 
-                {/* Desktop: Table */}
                 <div className="hidden md:block">
                     <table className="w-full border-separate border-spacing-x-3">
                         <thead className="sticky top-0 bg-zinc-50">

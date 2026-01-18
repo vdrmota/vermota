@@ -24,7 +24,15 @@ const QUICK_PROMPTS = [
 export default function AIPrompt() {
     const [inputValue, setInputValue] = useState('')
     const [isFocused, setIsFocused] = useState(false)
+    const [isDesktop, setIsDesktop] = useState(false)
     const inputRef = useRef<HTMLTextAreaElement>(null)
+
+    useEffect(() => {
+        const checkScreenSize = () => setIsDesktop(window.innerWidth >= 640)
+        checkScreenSize()
+        window.addEventListener('resize', checkScreenSize)
+        return () => window.removeEventListener('resize', checkScreenSize)
+    }, [])
 
     const handlePromptClick = (prompt: string) => {
         if (inputRef.current) {
@@ -36,7 +44,6 @@ export default function AIPrompt() {
 
     const handleSubmit = () => {
         if (inputValue.trim()) {
-            // Handle submit logic here
             console.log('Submitting:', inputValue)
             setInputValue('')
         }
@@ -55,12 +62,10 @@ export default function AIPrompt() {
 
     const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setInputValue(e.target.value)
-        // Auto-resize
         e.target.style.height = 'auto'
         e.target.style.height = `${Math.min(e.target.scrollHeight, 160)}px`
     }
 
-    // Global keyboard shortcut to focus the AI prompt (Cmd+K / Ctrl+K)
     useEffect(() => {
         const handleGlobalKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
@@ -74,24 +79,24 @@ export default function AIPrompt() {
 
     return (
         <div className="fixed left-0 right-0 lg:left-56 z-40 flex justify-center px-4 bottom-2 sm:bottom-3">
-            <div className={`flex w-full max-w-[572px] flex-col gap-3 transition-transform duration-300 ease-out ${isFocused ? '' : 'translate-y-[52px] sm:translate-y-0'}`}>
-                {/* Main input container - True Apple Liquid Glass */}
+            <div className={`flex w-full max-w-[572px] flex-col transition-all duration-300 ease-out ${isFocused ? 'gap-3' : 'gap-0'}`}>
                 <div
                     className={`
                         relative flex flex-col rounded-[28px] overflow-hidden transition-all duration-500
                         ${isFocused
-                            ? 'backdrop-blur-xl shadow-[0_0_0_1px_rgba(255,255,255,0.25),0_12px_48px_rgba(0,47,167,0.5),0_4px_16px_rgba(0,0,0,0.15)]'
+                            ? 'backdrop-blur-xl shadow-[0_4px_16px_rgba(0,0,0,0.15)] sm:shadow-[0_0_0_1px_rgba(255,255,255,0.25),0_12px_48px_rgba(0,47,167,0.5),0_4px_16px_rgba(0,0,0,0.15)]'
                             : 'backdrop-blur-sm shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_8px_32px_rgba(0,47,167,0.2),0_2px_8px_rgba(0,0,0,0.06)]'
                         }
                     `}
                     style={{
                         background: isFocused
                             ? 'linear-gradient(135deg, #002FA7 0%, #002FA7 100%)'
-                            : 'linear-gradient(135deg, rgba(0,47,167,0.85) 0%, rgba(0,35,130,0.88) 100%)',
+                            : isDesktop
+                                ? 'linear-gradient(135deg, rgba(0,47,167,0.55) 0%, rgba(0,35,130,0.6) 100%)'
+                                : 'linear-gradient(135deg, rgba(0,47,167,0.85) 0%, rgba(0,35,130,0.88) 100%)',
                         transition: 'background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease',
                     }}
                 >
-                    {/* iOS-style bevel: Top border - light */}
                     <div
                         className="absolute inset-x-0 top-0 h-[1px] rounded-t-[28px]"
                         style={{
@@ -99,7 +104,6 @@ export default function AIPrompt() {
                         }}
                     />
 
-                    {/* iOS-style bevel: Left border - light */}
                     <div
                         className="absolute left-0 top-0 bottom-0 w-[1px] rounded-l-[28px]"
                         style={{
@@ -107,7 +111,6 @@ export default function AIPrompt() {
                         }}
                     />
 
-                    {/* iOS-style bevel: Bottom border - dark/transparent */}
                     <div
                         className="absolute inset-x-0 bottom-0 h-[1px] rounded-b-[28px]"
                         style={{
@@ -115,7 +118,6 @@ export default function AIPrompt() {
                         }}
                     />
 
-                    {/* iOS-style bevel: Right border - dark/transparent */}
                     <div
                         className="absolute right-0 top-0 bottom-0 w-[1px] rounded-r-[28px]"
                         style={{
@@ -123,7 +125,6 @@ export default function AIPrompt() {
                         }}
                     />
 
-                    {/* Inner glow / specular */}
                     <div
                         className="absolute inset-0 rounded-[28px] pointer-events-none transition-opacity duration-500"
                         style={{
@@ -170,8 +171,7 @@ export default function AIPrompt() {
 
                 </div>
 
-                {/* Quick prompt buttons - Liquid Glass pills */}
-                <div className={`flex justify-center gap-1.5 transition-all duration-300 ${isFocused ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none sm:opacity-100 sm:translate-y-0 sm:pointer-events-auto'}`}>
+                <div className={`hidden sm:flex justify-center gap-1.5 transition-all duration-300 overflow-hidden ${isFocused ? 'opacity-100 max-h-12' : 'opacity-0 max-h-0 pointer-events-none'}`}>
                     {QUICK_PROMPTS.map((item) => {
                         const IconComponent = item.icon
                         return (
@@ -192,7 +192,6 @@ export default function AIPrompt() {
                                     background: 'linear-gradient(135deg, rgba(0,47,167,0.45) 0%, rgba(0,35,130,0.5) 100%)',
                                 }}
                             >
-                                {/* Pill highlight */}
                                 <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.5) 50%, transparent 90%)' }} />
                                 <IconComponent className="h-3 w-3 text-white" />
                                 <span>{item.text}</span>

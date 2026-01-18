@@ -12,13 +12,11 @@ function DashboardContent({ children }: { children: React.ReactNode }) {
 
     return (
         <>
-            {/* Mobile menu rendered outside flex container to avoid stacking context issues */}
             <MobileMenu />
 
             <div className="flex min-h-screen bg-[#fcfcfc]">
                 <Sidebar />
 
-                {/* Main content area */}
                 <div className={`flex flex-1 flex-col transition-all duration-200 ${collapsed ? 'lg:ml-24' : 'lg:ml-56'}`}>
                     <TopBar />
                     <main className="flex-1 overflow-auto p-6 pb-40">{children}</main>

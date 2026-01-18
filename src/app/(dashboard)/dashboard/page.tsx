@@ -1,175 +1,175 @@
 import Link from 'next/link'
-import { TrendingUp, TrendingDown, Users, Gift, Repeat, DollarSign, ArrowUpRight, MoreHorizontal } from 'lucide-react'
+import { Coffee, Sparkles, Users, Gift, Clock, Cake, TrendingUp, ChevronRight, UserMinus, BarChart3 } from 'lucide-react'
 import { card } from '../_lib/styles'
 
-const stats = [
-    { title: 'Active Members', value: '12,847', change: '+12.5%', trend: 'up', icon: Users },
-    { title: 'Points Issued', value: '2.4M', change: '+8.2%', trend: 'up', icon: Gift },
-    { title: 'Redemption Rate', value: '34.2%', change: '+2.1%', trend: 'up', icon: Repeat },
-    { title: 'Program Revenue', value: '$847K', change: '-3.4%', trend: 'down', icon: DollarSign },
+const todayStats = [
+    { label: 'Customers today', value: '127', subtext: '23 new members' },
+    { label: 'Rewards redeemed', value: '34', subtext: '12 free drinks' },
+    { label: 'Points earned', value: '4,280', subtext: 'across 89 visits' },
 ]
 
-const recentActivity = [
-    { customer: 'Sarah Mitchell', action: 'Redeemed 500 points', reward: 'Free Coffee', time: '2 min ago', avatar: 'SM' },
-    { customer: 'James Wilson', action: 'Earned 150 points', reward: 'Purchase', time: '5 min ago', avatar: 'JW' },
-    { customer: 'Emily Chen', action: 'Joined loyalty program', reward: 'Welcome Bonus', time: '12 min ago', avatar: 'EC' },
-    { customer: 'Michael Brown', action: 'Reached Gold tier', reward: 'Tier Upgrade', time: '18 min ago', avatar: 'MB' },
-    { customer: 'Lisa Anderson', action: 'Redeemed 1,200 points', reward: '$20 Gift Card', time: '24 min ago', avatar: 'LA' },
-    { customer: 'David Kim', action: 'Referred a friend', reward: 'Referral Bonus', time: '31 min ago', avatar: 'DK' },
+const insights = [
+    {
+        type: 'opportunity',
+        icon: Users,
+        title: '18 customers are 1 drink away from a free reward',
+        description: 'Send them a reminder to come back this week',
+        action: 'Send reminder',
+        href: '/dashboard/close-to-reward',
+        color: 'bg-blue-100 text-blue-600',
+    },
+    {
+        type: 'trend',
+        icon: TrendingUp,
+        title: 'Tuesday afternoons are 40% slower than average',
+        description: 'Consider a happy hour promotion for Tuesdays 2-4pm',
+        action: 'Create campaign',
+        href: '/dashboard/campaigns/new',
+        color: 'bg-amber-100 text-amber-600',
+    },
+    {
+        type: 'win',
+        icon: Gift,
+        title: 'Referral program drove 12 new sign-ups this week',
+        description: "That's 3x more than last week",
+        action: 'View details',
+        href: '/dashboard/referrals',
+        color: 'bg-emerald-100 text-emerald-600',
+    },
+    {
+        type: 'winback',
+        icon: UserMinus,
+        title: '47 customers haven\'t visited in 30+ days',
+        description: 'Re-engage them with a special win-back offer',
+        action: 'Start win-back',
+        href: '/dashboard/win-back',
+        color: 'bg-orange-100 text-orange-600',
+    },
+    {
+        type: 'insight',
+        icon: BarChart3,
+        title: 'Oat milk lattes are up 25% this month',
+        description: 'Consider featuring them in your next promotion',
+        action: 'See trends',
+        href: '/dashboard/trends',
+        color: 'bg-purple-100 text-purple-600',
+    },
 ]
 
-const topPrograms = [
-    { name: 'Points Rewards', members: 8420, growth: 15.2, color: 'bg-[#002FA7]' },
-    { name: 'VIP Tiers', members: 3210, growth: 22.8, color: 'bg-emerald-500' },
-    { name: 'Referral Program', members: 1217, growth: 8.4, color: 'bg-amber-500' },
+const liveActivity = [
+    { customer: 'Marcus C.', action: 'Redeemed free latte', time: 'Just now' },
+    { customer: 'Priya S.', action: 'Earned 45 points', time: '2 min ago' },
+    { customer: 'Alex R.', action: 'Joined loyalty program', time: '8 min ago' },
+    { customer: 'Sophie L.', action: 'Reached Gold status', time: '15 min ago' },
+    { customer: 'Jordan P.', action: 'Claimed birthday reward', time: '22 min ago' },
 ]
 
-const campaigns = [
-    { name: 'Summer Double Points', status: 'Active', reach: '4,521', conversion: '12.3%' },
-    { name: 'New Member Welcome', status: 'Active', reach: '892', conversion: '45.2%' },
-    { name: 'Win-back Campaign', status: 'Scheduled', reach: '—', conversion: '—' },
+const upcoming = [
+    { type: 'birthday', icon: Cake, label: '6 customer birthdays', timeframe: 'This week' },
+    { type: 'expiring', icon: Clock, label: '23 rewards expiring', timeframe: 'Next 7 days' },
+    { type: 'campaign', icon: Gift, label: 'Winter Warm-Up launches', timeframe: 'Monday' },
 ]
 
 export default function DashboardPage() {
     return (
-        <div className="space-y-8">
-            {/* Header */}
+        <div className="space-y-6">
             <div>
-                <h1 className="text-2xl font-semibold text-zinc-900">Welcome back</h1>
-                <p className="mt-1 text-zinc-500">Here's what's happening with your loyalty programs today.</p>
+                <h1 className="text-2xl font-semibold text-zinc-900">Good morning</h1>
+                <p className="mt-1 text-zinc-500">Friday, January 17 — Here's what's happening at Acme Coffee today.</p>
             </div>
 
-            {/* Stats Grid */}
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                {stats.map((stat) => {
-                    const Icon = stat.icon
-                    return (
-                        <div key={stat.title} className={`${card.base} p-5`}>
-                            <div className="flex items-center justify-between">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100">
-                                    <Icon className="h-5 w-5 text-zinc-600" />
-                                </div>
-                                <span className={`flex items-center gap-1 text-sm font-medium ${stat.trend === 'up' ? 'text-emerald-600' : 'text-red-500'}`}>
-                                    {stat.trend === 'up' ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
-                                    {stat.change}
-                                </span>
-                            </div>
-                            <p className="mt-4 text-2xl font-semibold text-zinc-900">{stat.value}</p>
-                            <p className="mt-1 text-sm text-zinc-500">{stat.title}</p>
-                        </div>
-                    )
-                })}
-            </div>
-
-            {/* Main Content Grid */}
-            <div className="grid gap-6 lg:grid-cols-3">
-                {/* Chart Placeholder */}
-                <div className={`lg:col-span-2 ${card.base} p-6`}>
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <h2 className="text-lg font-semibold text-zinc-900">Member Growth</h2>
-                            <p className="text-sm text-zinc-500">Last 6 months performance</p>
-                        </div>
-                        <button className="rounded-lg p-2 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600">
-                            <MoreHorizontal className="h-5 w-5" />
-                        </button>
-                    </div>
-                    {/* Chart bars placeholder */}
-                    <div className="mt-6 flex h-48 items-end justify-between gap-3">
-                        {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((height, i) => (
-                            <div key={i} className="flex-1 rounded-t-lg bg-gradient-to-t from-[#002FA7] to-[#002FA7]/60" style={{ height: `${height}%` }} />
-                        ))}
-                    </div>
-                    <div className="mt-4 flex justify-between text-xs text-zinc-400">
-                        <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
-                    </div>
+            <div className={`${card.base} p-6`}>
+                <div className="flex items-center gap-2 text-sm font-medium text-zinc-500 mb-4">
+                    <Coffee className="h-4 w-4" />
+                    Today so far
                 </div>
-
-                {/* Top Programs */}
-                <div className={`${card.base} p-6`}>
-                    <div className="flex items-center justify-between">
-                        <h2 className="text-lg font-semibold text-zinc-900">Top Programs</h2>
-                        <Link href="/dashboard/top-programs" className="flex items-center gap-1 text-sm text-[#002FA7] hover:underline">
-                            View all <ArrowUpRight className="h-4 w-4" />
-                        </Link>
-                    </div>
-                    <div className="mt-6 space-y-4">
-                        {topPrograms.map((program) => (
-                            <div key={program.name} className="flex items-center gap-4">
-                                <div className={`h-10 w-10 rounded-xl ${program.color} flex items-center justify-center`}>
-                                    <Gift className="h-5 w-5 text-white" />
-                                </div>
-                                <div className="flex-1">
-                                    <p className="font-medium text-zinc-900">{program.name}</p>
-                                    <p className="text-sm text-zinc-500">{program.members.toLocaleString()} members</p>
-                                </div>
-                                <span className="text-sm font-medium text-emerald-600">+{program.growth}%</span>
-                            </div>
-                        ))}
-                    </div>
+                <div className="grid gap-6 sm:grid-cols-3">
+                    {todayStats.map((stat) => (
+                        <div key={stat.label}>
+                            <p className="text-3xl font-semibold text-zinc-900">{stat.value}</p>
+                            <p className="text-sm text-zinc-500 mt-1">{stat.label}</p>
+                            <p className="text-xs text-emerald-600 mt-0.5">{stat.subtext}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
 
-            {/* Recent Activity & Campaigns */}
-            <div className="grid gap-6 lg:grid-cols-2">
-                {/* Recent Activity */}
-                <div className={`${card.base} p-6`}>
-                    <div className="flex items-center justify-between">
-                        <h2 className="text-lg font-semibold text-zinc-900">Recent Activity</h2>
-                        <button className="flex items-center gap-1 text-sm text-[#002FA7] hover:underline">
-                            View all <ArrowUpRight className="h-4 w-4" />
-                        </button>
-                    </div>
-                    <div className="mt-4 space-y-4">
-                        {recentActivity.map((activity, i) => (
-                            <div key={i} className="flex items-center gap-3">
-                                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 text-xs font-medium text-zinc-600">
-                                    {activity.avatar}
+            <div className={`${card.base} p-6`}>
+                <div className="flex items-center gap-2 text-sm font-medium text-zinc-500 mb-4">
+                    <Sparkles className="h-4 w-4" />
+                    Insights for you
+                </div>
+                <div className="space-y-3">
+                    {insights.map((insight, i) => {
+                        const Icon = insight.icon
+                        return (
+                            <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-zinc-50 border border-zinc-100">
+                                <div className={`shrink-0 h-8 w-8 rounded-lg flex items-center justify-center ${insight.color}`}>
+                                    <Icon className="h-4 w-4" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="truncate text-sm font-medium text-zinc-900">{activity.customer}</p>
-                                    <p className="truncate text-sm text-zinc-500">{activity.action}</p>
+                                    <p className="font-medium text-zinc-900">{insight.title}</p>
+                                    <p className="text-sm text-zinc-500 mt-0.5">{insight.description}</p>
                                 </div>
-                                <span className="shrink-0 text-xs text-zinc-400">{activity.time}</span>
+                                <Link href={insight.href} className="shrink-0 text-sm font-medium text-[#002FA7] hover:underline">
+                                    {insight.action}
+                                </Link>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+                <div className={`${card.base} p-6`}>
+                    <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2 text-sm font-medium text-zinc-500">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            Live activity
+                        </div>
+                        <Link href="/dashboard/activity" className="text-sm text-[#002FA7] hover:underline">View all</Link>
+                    </div>
+                    <div className="space-y-3">
+                        {liveActivity.map((activity, i) => (
+                            <div key={i} className="flex items-center justify-between py-2 border-b border-zinc-100 last:border-0">
+                                <div>
+                                    <span className="font-medium text-zinc-900">{activity.customer}</span>
+                                    <span className="text-zinc-500"> {activity.action}</span>
+                                </div>
+                                <span className="text-xs text-zinc-400">{activity.time}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* Active Campaigns */}
                 <div className={`${card.base} p-6`}>
-                    <div className="flex items-center justify-between">
-                        <h2 className="text-lg font-semibold text-zinc-900">Active Campaigns</h2>
-                        <button className="rounded-lg bg-[#002FA7] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#002FA7]/90">
-                            New Campaign
-                        </button>
+                    <div className="flex items-center gap-2 text-sm font-medium text-zinc-500 mb-4">
+                        <Clock className="h-4 w-4" />
+                        Coming up
                     </div>
-                    <div className="mt-4 space-y-3">
-                        {campaigns.map((campaign) => (
-                            <div key={campaign.name} className="rounded-xl border border-zinc-100 bg-zinc-50 p-4">
-                                <div className="flex items-center justify-between">
-                                    <p className="font-medium text-zinc-900">{campaign.name}</p>
-                                    <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${campaign.status === 'Active' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>
-                                        {campaign.status}
-                                    </span>
-                                </div>
-                                <div className="mt-3 flex gap-6 text-sm">
-                                    <div>
-                                        <p className="text-zinc-500">Reach</p>
-                                        <p className="font-medium text-zinc-900">{campaign.reach}</p>
+                    <div className="space-y-3">
+                        {upcoming.map((item, i) => {
+                            const Icon = item.icon
+                            return (
+                                <button key={i} className="w-full flex items-center gap-4 p-4 rounded-xl bg-zinc-50 border border-zinc-100 hover:bg-zinc-100 transition-colors text-left cursor-pointer">
+                                    <div className="shrink-0 h-10 w-10 rounded-lg bg-white border border-zinc-200 flex items-center justify-center">
+                                        <Icon className="h-5 w-5 text-zinc-600" />
                                     </div>
-                                    <div>
-                                        <p className="text-zinc-500">Conversion</p>
-                                        <p className="font-medium text-zinc-900">{campaign.conversion}</p>
+                                    <div className="flex-1">
+                                        <p className="font-medium text-zinc-900">{item.label}</p>
+                                        <p className="text-sm text-zinc-500">{item.timeframe}</p>
                                     </div>
-                                </div>
-                            </div>
-                        ))}
+                                    <ChevronRight className="h-5 w-5 text-zinc-400" />
+                                </button>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
 
-            {/* Spacer for AI prompt */}
             <div className="h-32" />
         </div>
     )

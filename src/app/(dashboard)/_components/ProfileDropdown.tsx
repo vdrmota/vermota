@@ -53,7 +53,6 @@ export default function ProfileDropdown() {
                     <button
                         onClick={() => {
                             setOpen(false)
-                            // Handle sign out logic here
                         }}
                         className={`w-full cursor-pointer ${menuItem.base} ${menuItem.inactive}`}
                     >

@@ -1,5 +1,3 @@
-// Shared styles for dashboard floating components
-
 export const floatingPanel = {
     base: 'bg-white rounded-3xl shadow-[0_8px_24px_rgba(0,0,0,0.15)]',
     small: 'bg-white rounded-3xl shadow-[0_6px_20px_rgba(0,0,0,0.15)]',

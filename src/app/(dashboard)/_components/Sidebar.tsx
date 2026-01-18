@@ -15,7 +15,6 @@ export default function Sidebar() {
 
     return (
         <aside className={`fixed left-3 top-3 bottom-3 hidden flex-col ${floatingPanel.base} lg:flex ${collapsed ? 'w-14' : 'w-52'} transition-all duration-200 z-40`}>
-            {/* Header */}
             <div className={`flex h-14 items-center px-4 ${collapsed ? 'justify-center' : 'justify-between'}`}>
                 {!collapsed && <Logo linked={false} />}
                 <button
@@ -26,7 +25,6 @@ export default function Sidebar() {
                 </button>
             </div>
 
-            {/* Navigation */}
             <nav className="flex-1 px-3 py-2">
                 <ul className="space-y-0.5">
                     {navigation.map((item) => {
@@ -49,7 +47,6 @@ export default function Sidebar() {
                 </ul>
             </nav>
 
-            {/* Account Switcher */}
             <AccountSwitcher />
         </aside>
     )

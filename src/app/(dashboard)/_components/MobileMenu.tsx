@@ -15,7 +15,6 @@ export default function MobileMenu() {
 
     return (
         <>
-            {/* Overlay */}
             {open && (
                 <div
                     className="fixed inset-0 z-[100] bg-black/20 lg:hidden"
@@ -23,13 +22,11 @@ export default function MobileMenu() {
                 />
             )}
 
-            {/* Drawer */}
             <div
                 className={`fixed bottom-3 left-3 top-3 z-[110] flex w-64 flex-col ${floatingPanel.base} transition-transform duration-200 ease-in-out lg:hidden ${
                     open ? 'translate-x-0' : '-translate-x-[calc(100%+12px)]'
                 }`}
             >
-                {/* Header */}
                 <div className="flex h-14 items-center justify-between px-4">
                     <Logo linked={false} />
                     <button
@@ -40,7 +37,6 @@ export default function MobileMenu() {
                     </button>
                 </div>
 
-                {/* Navigation */}
                 <nav className="flex-1 px-3 py-2">
                     <ul className="space-y-1">
                         {navigation.map((item) => {
@@ -63,7 +59,6 @@ export default function MobileMenu() {
                     </ul>
                 </nav>
 
-                {/* Account Switcher */}
                 <AccountSwitcher />
             </div>
         </>
