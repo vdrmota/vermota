@@ -5,7 +5,7 @@ const integrations = [
     {
         icon: CreditCard,
         name: 'POS Systems',
-        description: 'Square, Toast, Clover, Lightspeed, and more.',
+        description: 'Square, Toast, Clover, Shopify, and more.',
         status: 'available',
     },
     {

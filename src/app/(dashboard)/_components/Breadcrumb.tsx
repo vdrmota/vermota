@@ -20,9 +20,9 @@ export default function Breadcrumb() {
                     <span key={href} className="flex items-center gap-1">
                         {index > 0 && <ChevronRight className="h-4 w-4 text-zinc-400" />}
                         {isLast ? (
-                            <span className="text-zinc-900">{name}</span>
+                            <span className="font-medium text-zinc-900">{name}</span>
                         ) : (
-                            <Link href={href} className="text-zinc-500 hover:text-zinc-700">
+                            <Link href={href} className="font-medium text-zinc-500 hover:text-zinc-700">
                                 {name}
                             </Link>
                         )}

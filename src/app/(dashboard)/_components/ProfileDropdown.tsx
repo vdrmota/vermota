@@ -28,7 +28,7 @@ export default function ProfileDropdown() {
         <div ref={dropdownRef} className="relative">
             <button
                 onClick={() => setOpen(!open)}
-                className={`flex h-10 w-10 cursor-pointer items-center justify-center ${floatingPanel.small} transition-colors hover:bg-zinc-200`}
+                className={`flex h-10 w-14 cursor-pointer items-center justify-center ${floatingPanel.small} transition-colors hover:bg-zinc-100`}
             >
                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-300 text-xs font-medium text-zinc-600">A</div>
             </button>

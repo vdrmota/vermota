@@ -1,38 +1,31 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import Logo from '@/components/Logo'
 import { navigation } from '../_lib/navigation'
 import { floatingPanel, menuItem } from '../_lib/styles'
+import { useMobileMenu } from '../_context/MobileMenuContext'
+import AccountSwitcher from './AccountSwitcher'
 
 export default function MobileMenu() {
     const pathname = usePathname()
-    const [open, setOpen] = useState(false)
+    const { open, setOpen } = useMobileMenu()
 
     return (
         <>
-            {/* Hamburger button */}
-            <button
-                onClick={() => setOpen(true)}
-                className="cursor-pointer rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-200 hover:text-zinc-700 lg:hidden"
-            >
-                <Menu className="h-5 w-5" />
-            </button>
-
             {/* Overlay */}
             {open && (
                 <div
-                    className="fixed inset-0 z-40 bg-black/20 lg:hidden"
+                    className="fixed inset-0 z-[100] bg-black/20 lg:hidden"
                     onClick={() => setOpen(false)}
                 />
             )}
 
             {/* Drawer */}
             <div
-                className={`fixed bottom-3 left-3 top-3 z-50 w-64 ${floatingPanel.base} transition-transform duration-200 ease-in-out lg:hidden ${
+                className={`fixed bottom-3 left-3 top-3 z-[110] flex w-64 flex-col ${floatingPanel.base} transition-transform duration-200 ease-in-out lg:hidden ${
                     open ? 'translate-x-0' : '-translate-x-[calc(100%+12px)]'
                 }`}
             >
@@ -48,7 +41,7 @@ export default function MobileMenu() {
                 </div>
 
                 {/* Navigation */}
-                <nav className="px-3 py-2">
+                <nav className="flex-1 px-3 py-2">
                     <ul className="space-y-1">
                         {navigation.map((item) => {
                             const isActive = item.href === '/dashboard'
@@ -69,6 +62,9 @@ export default function MobileMenu() {
                         })}
                     </ul>
                 </nav>
+
+                {/* Account Switcher */}
+                <AccountSwitcher />
             </div>
         </>
     )
